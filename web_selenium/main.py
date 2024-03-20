@@ -1,7 +1,10 @@
 from selenium import webdriver
 from webdriver_manager.firefox import GeckoDriverManager
 from selenium.webdriver.firefox.service import Service
+import os.path
+from dotenv import load_dotenv
 
+load_dotenv()
 # Seleção do driver do firefox
 service = Service(GeckoDriverManager().install())
 
@@ -9,9 +12,9 @@ browser = webdriver.Firefox(service=service)
 
 
 link = 'https://pages.hashtagtreinamentos.com/inscricao-minicurso-python-automacao-org?origemurl=hashtag_yt_org_minipython_videoselenium'
-name = 'Jorder'
-email = 'jorderpgomes@gmail.com'
-whatsapp = '(85)988934098'
+name = os.getenv('NAME')
+email = os.getenv('EMAIL_FROM')
+whatsapp = os.getenv('WHATSAPP')
 
 # Abrir página
 browser.get(link)

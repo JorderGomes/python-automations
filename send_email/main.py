@@ -1,7 +1,7 @@
 import smtplib
 import email.message
-from dotenv import load_dotenv
 import os
+from dotenv import load_dotenv
 
 load_dotenv()
 
@@ -11,8 +11,8 @@ def send_email():
     '''
     msg = email.message.Message()
     msg['subject'] = 'Assunto'
-    msg['From'] = 'jordernoveau@gmail.com'
-    msg['To'] = 'jorderpgomes@gmail.com'
+    msg['From'] = os.getenv('EMAIL_FROM')
+    msg['To'] = os.getenv('EMAIL_TO')
     password =  os.getenv('EMAIL_PASSWORD')
     msg.add_header('Content-Type', 'text/html')
     msg.set_payload(message_body)
